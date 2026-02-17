@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Unmoored Generation — A Catholic Response to the Crisis of Purpose</title>
+<meta name="description" content="An initiative of the Likoudis Legacy Foundation bringing the Catholic intellectual tradition to bear on the crisis of meaning afflicting young adults.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #0a0a0a;
+  --cream: #f5f0e8;
+  --parchment: #ece5d8;
+  --gold: #b8860b;
+  --gold-light: #d4a843;
+  --blood: #8b1a1a;
+  --blood-deep: #5c0e0e;
+  --slate: #3a3a3a;
+  --mist: #c8c0b4;
+  --white: #fefdfb;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,10,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(184,134,11,0.3);
+  transition: transform 0.3s ease;
+}
+nav.hidden { transform: translateY(-100%); }
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 2rem;
+}
+.nav-brand {
+  font-family: 'Playfair Display', serif;
+  color: var(--gold); font-size: 1rem; font-weight: 700;
+  letter-spacing: 0.05em; text-decoration: none;
+}
+.nav-links { display: flex; gap: 1.8rem; list-style: none; }
+.nav-links a {
+  color: var(--mist); text-decoration: none;
+  font-family: 'DM Sans', sans-serif; font-size: 0.8rem;
+  font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--gold); }
+.hamburger { display: none; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; }
+
+/* HERO */
+.hero {
+  min-height: 100vh; background: var(--ink);
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  text-align: center; padding: 6rem 2rem 4rem;
+  position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(139,26,26,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(184,134,11,0.1) 0%, transparent 50%);
+}
+.hero::after {
+  content: ''; position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+.hero-content { position: relative; z-index: 1; max-width: 900px; }
+.hero-cross { font-size: 2.5rem; color: var(--gold); margin-bottom: 2rem; opacity: 0; animation: fadeDown 1s 0.3s forwards; }
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 900;
+  color: var(--cream); line-height: 1.05; margin-bottom: 0.5rem;
+  opacity: 0; animation: fadeUp 1s 0.5s forwards;
+}
+.hero h1 span {
+  display: block; color: var(--gold); font-style: italic;
+  font-weight: 400; font-size: 0.45em; margin-top: 0.3em; letter-spacing: 0.02em;
+}
+.hero-subtitle {
+  font-size: clamp(1.05rem, 2vw, 1.35rem); color: var(--mist);
+  max-width: 640px; margin: 2rem auto; font-weight: 300;
+  opacity: 0; animation: fadeUp 1s 0.8s forwards;
+}
+.hero-stats {
+  display: flex; gap: 3rem; justify-content: center;
+  margin-top: 3rem; opacity: 0; animation: fadeUp 1s 1.1s forwards;
+  flex-wrap: wrap;
+}
+.hero-stat { text-align: center; }
+.hero-stat-number { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--blood); line-height: 1; }
+.hero-stat-label { font-family: 'DM Sans', sans-serif; font-size: 0.72rem; color: var(--mist); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 0.5rem; }
+.hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--gold); opacity: 0.6; animation: pulse 2s infinite; font-size: 1.5rem; z-index: 1; }
+
+/* SECTIONS */
+.section { padding: 6rem 2rem; }
+.section-inner { max-width: 960px; margin: 0 auto; }
+.section-label { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blood); margin-bottom: 1rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; line-height: 1.15; margin-bottom: 2rem; color: var(--ink); }
+.section-intro { font-size: 1.1rem; color: var(--slate); max-width: 720px; margin-bottom: 3rem; }
+
+/* CRISIS */
+.crisis { background: var(--white); border-top: 4px solid var(--blood); }
+.data-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin: 3rem 0; }
+.data-card {
+  background: var(--cream); border: 1px solid var(--parchment);
+  padding: 2rem; position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer; text-decoration: none; color: inherit; display: block;
+}
+.data-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+.data-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blood), var(--gold)); }
+.data-number { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-weight: 900; color: var(--blood); line-height: 1; margin-bottom: 0.5rem; }
+.data-title { font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem; }
+.data-desc { font-size: 0.88rem; color: var(--slate); line-height: 1.6; }
+.data-source { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; color: var(--mist); margin-top: 1rem; text-transform: uppercase; letter-spacing: 0.05em; }
+.data-link-hint { font-family: 'DM Sans', sans-serif; font-size: 0.7rem; color: var(--gold); margin-top: 0.5rem; font-weight: 600; }
+
+/* QUOTE */
+.pull-quote { border-left: 4px solid var(--gold); padding: 2rem 2.5rem; margin: 3rem 0; background: linear-gradient(135deg, rgba(184,134,11,0.05), transparent); }
+.pull-quote p { font-family: 'Playfair Display', serif; font-size: 1.25rem; font-style: italic; color: var(--ink); line-height: 1.6; }
+.pull-quote cite { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-style: normal; color: var(--slate); margin-top: 1rem; letter-spacing: 0.05em; }
+
+/* FRAMEWORK */
+.framework { background: var(--ink); color: var(--cream); position: relative; }
+.framework::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 20%, rgba(184,134,11,0.08) 0%, transparent 50%); }
+.framework .section-inner { position: relative; z-index: 1; }
+.framework .section-label { color: var(--gold); }
+.framework .section-title { color: var(--cream); }
+.framework .section-intro { color: var(--mist); }
+.pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin: 3rem 0; }
+.pillar { border: 1px solid rgba(184,134,11,0.25); padding: 2.5rem 2rem; background: rgba(255,255,255,0.03); transition: border-color 0.3s, background 0.3s; }
+.pillar:hover { border-color: var(--gold); background: rgba(184,134,11,0.06); }
+.pillar-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
+.pillar-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); margin-bottom: 0.3rem; }
+.pillar-question { font-style: italic; font-size: 1rem; color: var(--gold-light); margin-bottom: 1rem; }
+.pillar-lost, .pillar-recovered { font-size: 0.88rem; line-height: 1.6; margin-bottom: 1rem; }
+.pillar-lost { color: rgba(200,192,180,0.7); }
+.pillar-recovered { color: var(--cream); }
+.pillar-tag { font-family: 'DM Sans', sans-serif; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.pillar-tag.lost { color: var(--blood); }
+.pillar-tag.recovered { color: var(--gold); }
+
+/* ACEDIA */
+.acedia { background: var(--parchment); border-top: 1px solid var(--mist); }
+.acedia-content { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 2rem; }
+.acedia-text p { margin-bottom: 1.5rem; font-size: 1.02rem; color: var(--slate); }
+.acedia-sidebar { background: var(--ink); color: var(--cream); padding: 2.5rem; position: relative; }
+.acedia-sidebar::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--gold); }
+.acedia-sidebar h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 1.5rem; }
+.comparison-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(200,192,180,0.15); }
+.comparison-row:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.comp-label { font-family: 'DM Sans', sans-serif; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.3rem; }
+.comp-secular .comp-label { color: var(--mist); }
+.comp-catholic .comp-label { color: var(--gold); }
+.comp-text { font-size: 0.88rem; line-height: 1.5; }
+.comp-secular .comp-text { color: rgba(200,192,180,0.7); }
+.comp-catholic .comp-text { color: var(--cream); }
+
+/* SOLUTIONS */
+.solutions { background: var(--white); border-top: 4px solid var(--gold); }
+.solution-blocks { margin-top: 3rem; }
+.solution-block { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; padding: 2.5rem 0; border-bottom: 1px solid var(--parchment); }
+.solution-block:last-child { border-bottom: none; }
+.solution-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--parchment); line-height: 1; }
+.solution-title { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+.solution-desc { font-size: 0.98rem; color: var(--slate); line-height: 1.7; }
+
+/* ABOUT */
+.about { background: var(--cream); border-top: 1px solid var(--mist); }
+.about-content { display: grid; grid-template-columns: 2fr 1fr; gap: 4rem; margin-top: 2rem; }
+.about-text p { margin-bottom: 1.5rem; font-size: 1.02rem; color: var(--slate); }
+.about-sidebar { background: var(--white); border: 1px solid var(--parchment); padding: 2rem; }
+.about-sidebar h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 1rem; color: var(--ink); }
+.about-sidebar p { font-size: 0.9rem; color: var(--slate); line-height: 1.6; margin-bottom: 1rem; }
+.about-sidebar a { color: var(--gold); text-decoration: none; font-weight: 600; }
+
+/* JOIN */
+.join { background: var(--ink); color: var(--cream); text-align: center; position: relative; overflow: hidden; }
+.join::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(139,26,26,0.2) 0%, transparent 60%), radial-gradient(ellipse at 50% 100%, rgba(184,134,11,0.1) 0%, transparent 40%); }
+.join .section-inner { position: relative; z-index: 1; max-width: 700px; }
+.join .section-label { color: var(--gold); }
+.join .section-title { color: var(--cream); margin-bottom: 1.5rem; }
+.join-text { font-size: 1.1rem; color: var(--mist); margin-bottom: 3rem; }
+.role-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 3rem; text-align: left; }
+.role-card { border: 1px solid rgba(184,134,11,0.3); padding: 1.5rem; transition: border-color 0.3s, background 0.3s; }
+.role-card:hover { border-color: var(--gold); background: rgba(184,134,11,0.06); }
+.role-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.role-title { font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 700; color: var(--gold); margin-bottom: 0.4rem; }
+.role-desc { font-size: 0.78rem; color: var(--mist); line-height: 1.5; }
+.cta-form { display: flex; gap: 0; max-width: 500px; margin: 0 auto 2rem; }
+.cta-form input {
+  flex: 1; padding: 1rem 1.25rem;
+  border: 1px solid rgba(184,134,11,0.4); border-right: none;
+  background: rgba(255,255,255,0.05); color: var(--cream);
+  font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none;
+  transition: border-color 0.3s;
+}
+.cta-form input::placeholder { color: var(--mist); }
+.cta-form input:focus { border-color: var(--gold); }
+.cta-form button {
+  padding: 1rem 2rem; background: var(--gold); color: var(--ink); border: none;
+  font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer;
+  transition: background 0.3s; white-space: nowrap;
+}
+.cta-form button:hover { background: var(--gold-light); }
+.join-foundation { font-family: 'DM Sans', sans-serif; font-size: 0.8rem; color: var(--mist); margin-top: 1rem; }
+.join-foundation a { color: var(--gold); text-decoration: none; }
+
+/* FOOTER */
+footer { background: #050505; color: var(--mist); padding: 3rem 2rem; text-align: center; }
+.footer-brand { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1rem; margin-bottom: 0.5rem; }
+.footer-tagline { font-family: 'Source Serif 4', serif; font-style: italic; font-size: 0.9rem; color: rgba(200,192,180,0.5); margin-bottom: 1.5rem; }
+.footer-links { display: flex; gap: 2rem; justify-content: center; list-style: none; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.footer-links a { color: var(--mist); text-decoration: none; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; }
+.footer-links a:hover { color: var(--gold); }
+.footer-copy { font-family: 'DM Sans', sans-serif; font-size: 0.68rem; color: rgba(200,192,180,0.35); }
+
+/* MODAL */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 200; justify-content: center; align-items: center; padding: 2rem; }
+.modal-overlay.active { display: flex; }
+.modal { background: var(--white); max-width: 640px; width: 100%; max-height: 80vh; overflow-y: auto; padding: 3rem; position: relative; }
+.modal-close { position: absolute; top: 1rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--slate); }
+.modal h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 1rem; color: var(--ink); }
+.modal .modal-stat { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--blood); margin-bottom: 1rem; }
+.modal p { font-size: 0.95rem; color: var(--slate); line-height: 1.7; margin-bottom: 1rem; }
+.modal .citation { background: var(--cream); padding: 1.5rem; border-left: 3px solid var(--gold); margin-top: 1.5rem; }
+.modal .citation p { font-size: 0.85rem; margin-bottom: 0.5rem; }
+.modal .citation a { color: var(--gold); word-break: break-all; }
+.modal .citation .cite-label { font-family: 'DM Sans', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blood); margin-bottom: 0.5rem; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { opacity: 0.4; transform: translateX(-50%) translateY(0); } 50% { opacity: 0.8; transform: translateX(-50%) translateY(8px); } }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: rgba(10,10,10,0.98); flex-direction: column; padding: 1.5rem 2rem; gap: 1rem; }
+  .nav-links.open { display: flex; }
+  .hamburger { display: block; }
+  .hero-stats { gap: 1.5rem; }
+  .acedia-content { grid-template-columns: 1fr; gap: 2rem; }
+  .about-content { grid-template-columns: 1fr; gap: 2rem; }
+  .solution-block { grid-template-columns: 60px 1fr; gap: 1rem; }
+  .cta-form { flex-direction: column; }
+  .cta-form input { border-right: 1px solid rgba(184,134,11,0.4); border-bottom: none; }
+  .pillar-grid { grid-template-columns: 1fr; }
+  .role-cards { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-brand">THE UNMOORED GENERATION</a>
+    <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">☰</button>
+    <ul class="nav-links">
+      <li><a href="#crisis" onclick="this.closest('.nav-links').classList.remove('open')">The Crisis</a></li>
+      <li><a href="#framework" onclick="this.closest('.nav-links').classList.remove('open')">The Framework</a></li>
+      <li><a href="#diagnosis" onclick="this.closest('.nav-links').classList.remove('open')">The Diagnosis</a></li>
+      <li><a href="#solutions" onclick="this.closest('.nav-links').classList.remove('open')">The Way Forward</a></li>
+      <li><a href="#about" onclick="this.closest('.nav-links').classList.remove('open')">About</a></li>
+      <li><a href="#join" onclick="this.closest('.nav-links').classList.remove('open')">Join</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-cross">✝</div>
+    <h1>The Unmoored<br>Generation
+      <span>A Catholic Response to the Crisis of Purpose</span>
+    </h1>
+    <p class="hero-subtitle">An entire generation is adrift&mdash;not for lack of information, opportunity, or comfort, but for lack of an answer to the question every human soul asks: <em>What am I for?</em></p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-number">40%</div>
+        <div class="hero-stat-label">of U.S. high schoolers report<br>persistent sadness or hopelessness</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">17%</div>
+        <div class="hero-stat-label">of Americans now report<br>having no close friends</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-number">29%</div>
+        <div class="hero-stat-label">of U.S. adults have<br>no religious affiliation</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll">↓</div>
+</section>
+
+<!-- CRISIS -->
+<section class="section crisis" id="crisis">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The Evidence</div>
+      <h2 class="section-title">Something Has Gone Wrong</h2>
+      <p class="section-intro">The data is no longer ambiguous. Across every metric that measures human flourishing&mdash;mental health, social connection, sense of purpose, hope for the future&mdash;young adults in the West are in freefall. This is not a mood. It is a civilizational crisis.</p>
+    </div>
+
+    <div class="data-grid reveal">
+
+      <a class="data-card" onclick="openModal('modal-1')" role="button" tabindex="0">
+        <div class="data-number">40%</div>
+        <div class="data-title">Persistent sadness and hopelessness among teens</div>
+        <div class="data-desc">Four in ten U.S. high school students reported persistent feelings of sadness or hopelessness in 2023&mdash;up from 30% in 2013.</div>
+        <div class="data-source">CDC Youth Risk Behavior Survey, 2023</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-2')" role="button" tabindex="0">
+        <div class="data-number">20%</div>
+        <div class="data-title">Seriously considered attempting suicide</div>
+        <div class="data-desc">One in five high school students seriously considered attempting suicide in 2023. Nearly 1 in 10 attempted it.</div>
+        <div class="data-source">CDC YRBS Data Summary & Trends Report, 2013–2023</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-3')" role="button" tabindex="0">
+        <div class="data-number">3%→17%</div>
+        <div class="data-title">Collapse in close friendships</div>
+        <div class="data-desc">The share of Americans with no close friends has risen from 3% in 1990 to 17% in 2024. Young men are hardest hit, with 28% reporting no close social connections.</div>
+        <div class="data-source">Survey Center on American Life / AEI, 2021 & 2024</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-4')" role="button" tabindex="0">
+        <div class="data-number">29%</div>
+        <div class="data-title">Religiously unaffiliated&mdash;and rising among youth</div>
+        <div class="data-desc">29% of U.S. adults are now religiously unaffiliated. Among adults 18&ndash;29, 44% identify as &ldquo;nones.&rdquo; The unaffiliated report lower community satisfaction and social connection.</div>
+        <div class="data-source">Pew Research Center, 2023–24 Religious Landscape Study</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-5')" role="button" tabindex="0">
+        <div class="data-number">158,000</div>
+        <div class="data-title">&ldquo;Deaths of despair&rdquo; per year</div>
+        <div class="data-desc">In 2018, 158,000 Americans died from suicide, drug overdose, and alcoholic liver disease&mdash;up from 65,000 in 1995. Researchers attribute this to a &ldquo;broad deterioration in lives.&rdquo;</div>
+        <div class="data-source">Case & Deaton, <em>Deaths of Despair and the Future of Capitalism</em></div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-6')" role="button" tabindex="0">
+        <div class="data-number">53%→28%</div>
+        <div class="data-title">Friendship networks have halved</div>
+        <div class="data-desc">In 1990, 33% of Americans reported 10+ close friends. By 2021, just 13%. More than half of those with 3 or fewer friends report regular loneliness.</div>
+        <div class="data-source">Gallup (1990) & American Perspectives Survey (2021)</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+    </div>
+
+    <div class="pull-quote reveal">
+      <p>&ldquo;There seems to be a kind of malaise affecting the young people I teach. The worries don&rsquo;t appear to have a specific object&mdash;rather, there is generalized anxiety and perhaps, a kind of listlessness and a sense of being &lsquo;unmoored.&rsquo;&rdquo;</p>
+      <cite>&mdash; Iskra Fileva, University Professor of Philosophy</cite>
+    </div>
+
+    <div class="reveal" style="max-width:720px;">
+      <p style="font-size:1.05rem; color:var(--slate); margin-bottom:1.5rem;">The conventional explanations&mdash;pandemic disruption, social media, economic precarity, political polarization&mdash;each capture something real. But they remain at the level of symptoms. They describe what happened to young people without explaining <em>why</em> it has hollowed them out so completely.</p>
+      <p style="font-size:1.05rem; color:var(--slate);">The answer lies deeper. It is <strong>anthropological</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FRAMEWORK -->
+<section class="section framework" id="framework">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The Catholic Anthropological Framework</div>
+      <h2 class="section-title">Four Pillars That Collapsed&mdash;<br>And What Can Replace Them</h2>
+      <p class="section-intro">The crisis is the lived experience of an anthropology with no room for purpose, no account of suffering, and no telos beyond self-constructed meaning in a universe assumed to be indifferent. The Catholic tradition identifies&mdash;and answers&mdash;the four fundamental questions every human soul requires.</p>
+    </div>
+    <div class="pillar-grid reveal">
+      <div class="pillar">
+        <span class="pillar-icon">🔥</span>
+        <div class="pillar-name">Telos</div>
+        <div class="pillar-question">&ldquo;What am I for?&rdquo;</div>
+        <div class="pillar-tag lost">What was lost</div>
+        <div class="pillar-lost">&ldquo;Find your passion&rdquo;&mdash;an infinite menu with no criteria for selection. The paralysis of having to choose your own reason for being.</div>
+        <div class="pillar-tag recovered">What the tradition offers</div>
+        <div class="pillar-recovered">You have a vocation&mdash;a calling discovered, not invented. You are made for union with God, and every authentic good you pursue participates in that ultimate end.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">✝</span>
+        <div class="pillar-name">Suffering</div>
+        <div class="pillar-question">&ldquo;Why does it hurt?&rdquo;</div>
+        <div class="pillar-tag lost">What was lost</div>
+        <div class="pillar-lost">Suffering as mere damage&mdash;a malfunction to be repaired or endured. No redemptive meaning. Only coping mechanisms.</div>
+        <div class="pillar-tag recovered">What the tradition offers</div>
+        <div class="pillar-recovered">The Cross reveals that suffering can be redemptive. United to Christ&rsquo;s, it becomes participation in the work of salvation&mdash;not meaningless agony but mystery with purpose.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">🕊</span>
+        <div class="pillar-name">Communion</div>
+        <div class="pillar-question">&ldquo;To whom do I belong?&rdquo;</div>
+        <div class="pillar-tag lost">What was lost</div>
+        <div class="pillar-lost">Relationships as contracts between autonomous individuals. The loneliest generation in history&mdash;connected to everyone, belonging to no one.</div>
+        <div class="pillar-tag recovered">What the tradition offers</div>
+        <div class="pillar-recovered">Made in the image of a Trinitarian God, your identity is constituted by your relationships. Self-gift, not self-actualization, is the path to fulfillment.</div>
+      </div>
+      <div class="pillar">
+        <span class="pillar-icon">✦</span>
+        <div class="pillar-name">Transcendence</div>
+        <div class="pillar-question">&ldquo;Is this all there is?&rdquo;</div>
+        <div class="pillar-tag lost">What was lost</div>
+        <div class="pillar-lost">The &ldquo;immanent frame&rdquo;&mdash;a sealed room with no exit. A nameless hunger for &ldquo;something more&rdquo; with no vocabulary to identify it.</div>
+        <div class="pillar-tag recovered">What the tradition offers</div>
+        <div class="pillar-recovered">Reality is sacramental. The material world is charged with the grandeur of God. Ordinary life&mdash;eating, working, loving&mdash;is a journey toward the inexhaustible.</div>
+      </div>
+    </div>
+    <div class="pull-quote reveal" style="border-left-color:var(--gold);">
+      <p style="color:var(--cream);">&ldquo;You have made us for Yourself, O Lord, and our hearts are restless until they rest in You.&rdquo;</p>
+      <cite style="color:var(--mist);">&mdash; St. Augustine, <em>Confessions</em></cite>
+    </div>
+  </div>
+</section>
+
+<!-- ACEDIA -->
+<section class="section acedia" id="diagnosis">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The Ancient Diagnosis</div>
+      <h2 class="section-title">Acedia: The Noonday Demon</h2>
+    </div>
+    <div class="acedia-content reveal">
+      <div class="acedia-text">
+        <p>The secular world calls it &ldquo;anxiety&rdquo; or &ldquo;depression&rdquo; or &ldquo;malaise.&rdquo; The Catholic tradition has a far more precise and actionable concept: <strong>acedia</strong>&mdash;the spiritual torpor that makes a person unable to find joy in the good that is right in front of them.</p>
+        <p>The Desert Fathers identified it in the fourth century. Evagrius Ponticus described a monk who becomes restless, distracted, convinced he would be happier somewhere else. He cannot pray, cannot work, cannot rest. He is, in a word, <em>unmoored</em>.</p>
+        <p>This is not laziness. It is not clinical depression, though it shares symptoms. It is a spiritual condition: a refusal or inability to assent to the goodness of one&rsquo;s own existence in the place and time where God has put one.</p>
+        <p>Thomas Aquinas, refining the tradition, defined acedia as a sorrow in the face of divine good&mdash;a turning away from the very thing that would fulfill us, because the work of receiving it seems too demanding.</p>
+        <p>The advantage of this diagnosis is that it implies a cure&mdash;not better coping mechanisms, but a reorientation of the self toward the transcendent good for which it was made.</p>
+      </div>
+      <div class="acedia-sidebar">
+        <h3>Secular vs. Catholic Diagnosis</h3>
+        <div class="comparison-row">
+          <div class="comp-secular"><div class="comp-label">Secular</div><div class="comp-text">Generalized anxiety disorder</div></div>
+          <div class="comp-catholic"><div class="comp-label">Catholic</div><div class="comp-text">Acedia&mdash;sorrow in the face of divine good</div></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comp-secular"><div class="comp-label">Treatment</div><div class="comp-text">Therapy and medication</div></div>
+          <div class="comp-catholic"><div class="comp-label">Treatment</div><div class="comp-text">Rule of life, spiritual direction, purposeful work</div></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comp-secular"><div class="comp-label">Goal</div><div class="comp-text">Symptom management</div></div>
+          <div class="comp-catholic"><div class="comp-label">Goal</div><div class="comp-text">Reorientation toward one&rsquo;s true end</div></div>
+        </div>
+        <div class="comparison-row">
+          <div class="comp-secular"><div class="comp-label">Assumes</div><div class="comp-text">No inherent purpose to life</div></div>
+          <div class="comp-catholic"><div class="comp-label">Assumes</div><div class="comp-text">You are made for God and called by name</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTIONS -->
+<section class="section solutions" id="solutions">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">The Way Forward</div>
+      <h2 class="section-title">What Must Be Done</h2>
+      <p class="section-intro">An anthropological crisis demands an anthropological response. The Catholic tradition offers not merely diagnosis but prescription&mdash;concrete, actionable, and tested across two millennia.</p>
+    </div>
+    <div class="solution-blocks">
+      <div class="solution-block reveal"><div class="solution-num">01</div><div><div class="solution-title">Recover the Language of Vocation</div><div class="solution-desc">Stop telling young people to &ldquo;find their passion&rdquo; and start telling them they have a calling. The shift from self-expression to response&mdash;from creating meaning to discovering it&mdash;is enormously liberating for a generation paralyzed by infinite choice. Catholic institutions must make vocation the central framework for engaging young adults.</div></div></div>
+      <div class="solution-block reveal"><div class="solution-num">02</div><div><div class="solution-title">Build Rules of Life, Not Self-Help Programs</div><div class="solution-desc">Benedict did not respond to the spiritual torpor of the late Roman world by writing apologetics. He built monasteries. Young adults need structured daily practices&mdash;prayer, fasting, examination of conscience, works of mercy&mdash;that anchor them in reality and orient them toward God.</div></div></div>
+      <div class="solution-block reveal"><div class="solution-num">03</div><div><div class="solution-title">Rebuild Embodied Community</div><div class="solution-desc">The loneliness epidemic cannot be solved by better apps. It requires actual communities where people are known, accountable, and committed to one another across time. The parish, the confraternity, the lay association, the family&mdash;these make the anthropology of communion concrete.</div></div></div>
+      <div class="solution-block reveal"><div class="solution-num">04</div><div><div class="solution-title">Make the Public Argument</div><div class="solution-desc">The secular frameworks have been tried and have produced the malaise now visible to everyone. Catholic scholars, educators, and public intellectuals must bring the tradition&rsquo;s resources to bear on what is arguably the defining cultural crisis of our time&mdash;in major publications, at universities, and in public discourse.</div></div></div>
+      <div class="solution-block reveal"><div class="solution-num">05</div><div><div class="solution-title">Commission Bridging Research</div><div class="solution-desc">Do young adults with a strong sense of vocation show lower rates of despair? Do structured spiritual practices outperform secular wellness programs? Do parish communities reduce loneliness more effectively than digital ones? The data exists to be gathered, and it will strengthen the case immeasurably.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">About the Initiative</div>
+      <h2 class="section-title">Why This Matters Now</h2>
+    </div>
+    <div class="about-content reveal">
+      <div class="about-text">
+        <p><strong>The Unmoored Generation</strong> is an initiative of the Likoudis Legacy Foundation dedicated to bringing the Catholic intellectual tradition to bear on the crisis of meaning and purpose afflicting young adults across the Western world.</p>
+        <p>We believe the malaise observed by educators, therapists, and parents is not primarily psychological or political. It is anthropological&mdash;rooted in a civilizational loss of answers to the fundamental questions: <em>What am I for? Why does suffering exist? To whom do I belong? Is there anything beyond what I can see?</em></p>
+        <p>The Catholic tradition possesses two millennia of rigorous, tested responses to these questions. Our mission is to make those responses available, compelling, and actionable for the people and institutions working with young adults today.</p>
+        <p>We pursue this mission through scholarly research and publication, formation resources for parishes and campus ministries, public intellectual engagement, and the convening of educators, anthropologists, theologians, and pastoral leaders who refuse to accept despair as the new normal.</p>
+      </div>
+      <div class="about-sidebar">
+        <h3>Likoudis Legacy Foundation</h3>
+        <p>Founded to advance Catholic scholarship in the areas of Church unity, biblical commentary, and intellectual formation.</p>
+        <p>The Foundation&rsquo;s work includes the publication of <em>Faith in Crisis</em> (featuring Cardinal Robert Sarah and 30+ contributors), study guides, and conferences with senior Catholic leaders.</p>
+        <p><a href="#">Learn more about the Foundation →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOIN -->
+<section class="section join" id="join">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-label">Join the Movement</div>
+      <h2 class="section-title">This Generation Needs<br>More Than Empathy.<br>It Needs the Truth.</h2>
+      <p class="join-text">We are building a coalition of scholars, educators, pastors, and Catholic leaders committed to offering a real answer&mdash;not just empathy, not just diagnosis, but the fullness of the Catholic intellectual tradition brought to bear on the defining crisis of our time.</p>
+    </div>
+    <div class="role-cards reveal">
+      <div class="role-card"><div class="role-icon">📚</div><div class="role-title">Scholars &amp; Researchers</div><div class="role-desc">Contribute research on acedia, anthropology, and the empirical effects of purposelessness.</div></div>
+      <div class="role-card"><div class="role-icon">🏫</div><div class="role-title">Educators &amp; Campus Ministers</div><div class="role-desc">Deploy formation resources in your classrooms, parishes, and campus ministries.</div></div>
+      <div class="role-card"><div class="role-icon">✍️</div><div class="role-title">Writers &amp; Public Intellectuals</div><div class="role-desc">Help make the anthropological argument in publications, conferences, and public discourse.</div></div>
+      <div class="role-card"><div class="role-icon">⛪</div><div class="role-title">Pastors &amp; Parish Leaders</div><div class="role-desc">Rebuild embodied communities where young adults can find belonging and vocation.</div></div>
+    </div>
+    <div class="reveal">
+      <form class="cta-form" onsubmit="event.preventDefault(); this.innerHTML='<p style=\'color:var(--gold);font-family:Playfair Display,serif;font-size:1.2rem;padding:1rem;\'>Thank you. The work begins.</p>';">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Join Us</button>
+      </form>
+      <p class="join-foundation">An initiative of the <a href="#">Likoudis Legacy Foundation</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">THE UNMOORED GENERATION</div>
+  <div class="footer-tagline">&ldquo;Our hearts are restless until they rest in You.&rdquo;</div>
+  <ul class="footer-links">
+    <li><a href="#crisis">The Crisis</a></li>
+    <li><a href="#framework">The Framework</a></li>
+    <li><a href="#diagnosis">The Diagnosis</a></li>
+    <li><a href="#solutions">The Way Forward</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#join">Join</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 Likoudis Legacy Foundation. All rights reserved.</div>
+</footer>
+
+<!-- CITATION MODALS -->
+<div class="modal-overlay" id="modal-1">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-1')">&times;</button>
+    <div class="modal-stat">40%</div>
+    <h3>Persistent Feelings of Sadness or Hopelessness Among U.S. High School Students</h3>
+    <p>In 2023, 39.7% of U.S. high school students experienced persistent feelings of sadness or hopelessness during the past 12 months. This represents a significant increase from 30% in 2013, though a slight improvement from 42% in 2021.</p>
+    <p>The trend is particularly acute among female students (53%), LGBTQ+ students (65%), and students from marginalized racial and ethnic groups. The CDC describes this as part of an ongoing youth mental health crisis that predates and was exacerbated by the COVID-19 pandemic.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>CDC.</strong> &ldquo;Youth Risk Behavior Survey Data Summary &amp; Trends Report: 2013&ndash;2023.&rdquo; U.S. Department of Health and Human Services, Centers for Disease Control and Prevention, 2024.</p>
+      <p><a href="https://www.cdc.gov/yrbs/dstr/pdf/YRBS-2023-Data-Summary-Trend-Report.pdf" target="_blank" rel="noopener">https://www.cdc.gov/yrbs/dstr/pdf/YRBS-2023-Data-Summary-Trend-Report.pdf</a></p>
+      <p style="margin-top:1rem;"><strong>Verlenden, J.V., et al.</strong> &ldquo;Mental Health and Suicide Risk Among High School Students and Protective Factors &mdash; Youth Risk Behavior Survey, United States, 2023.&rdquo; <em>MMWR Suppl.</em> 73(4), October 2024.</p>
+      <p><a href="https://www.cdc.gov/mmwr/volumes/73/su/pdfs/su7304a9-H.pdf" target="_blank" rel="noopener">https://www.cdc.gov/mmwr/volumes/73/su/pdfs/su7304a9-H.pdf</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-2">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-2')">&times;</button>
+    <div class="modal-stat">20.4%</div>
+    <h3>Suicidal Ideation Among U.S. High School Students</h3>
+    <p>In 2023, 20.4% of high school students seriously considered attempting suicide, and 9.5% attempted suicide during the past 12 months. Among female students, 27% seriously considered suicide. Among LGBTQ+ students, more than 1 in 5 attempted suicide.</p>
+    <p>These rates have remained stubbornly high despite slight improvements between 2021 and 2023, and are significantly elevated compared to a decade ago.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>CDC.</strong> &ldquo;Mental Health&rdquo; &mdash; Adolescent and School Health. Updated January 2025.</p>
+      <p><a href="https://www.cdc.gov/healthy-youth/mental-health/index.html" target="_blank" rel="noopener">https://www.cdc.gov/healthy-youth/mental-health/index.html</a></p>
+      <p style="margin-top:1rem;"><strong>CDC.</strong> &ldquo;2023 Youth Risk Behavior Survey Results.&rdquo; Updated February 2025.</p>
+      <p><a href="https://www.cdc.gov/yrbs/results/2023-yrbs-results.html" target="_blank" rel="noopener">https://www.cdc.gov/yrbs/results/2023-yrbs-results.html</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-3">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-3')">&times;</button>
+    <div class="modal-stat">3% → 17%</div>
+    <h3>The Collapse of Close Friendships in America</h3>
+    <p>In 1990, just 3% of Americans reported having no close friends. By 2021, that figure had risen to 12%. By 2024, it reached 17%. The percentage of Americans with 10 or more close friends fell from 33% in 1990 to 13% in 2021.</p>
+    <p>Young men have been hardest hit: 28% of men under 30 reported having no close social connections in 2021. Among all Americans with three or fewer close friends, more than half report regular feelings of loneliness.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>Cox, Daniel A.</strong> &ldquo;The State of American Friendship: Change, Challenges, and Loss.&rdquo; <em>American Perspectives Survey</em>, Survey Center on American Life, June 2021.</p>
+      <p><a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/" target="_blank" rel="noopener">https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/</a></p>
+      <p style="margin-top:1rem;"><strong>Cox, Daniel A. and Pressler, Samuel.</strong> &ldquo;Disconnected: The Growing Class Divide in American Civic Life.&rdquo; Survey Center on American Life, 2024.</p>
+      <p><a href="https://www.aei.org/featured_data/the-decline-in-american-friendship/" target="_blank" rel="noopener">https://www.aei.org/featured_data/the-decline-in-american-friendship/</a></p>
+      <p style="margin-top:1rem;"><strong>Gallup Organization.</strong> &ldquo;Gallup News Service Poll: January 1990, Wave 2.&rdquo; Roper Center for Public Opinion Research.</p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-4">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-4')">&times;</button>
+    <div class="modal-stat">29%</div>
+    <h3>The Rise of Religious &ldquo;Nones&rdquo; in America</h3>
+    <p>According to Pew Research Center&rsquo;s 2023&ndash;24 Religious Landscape Study, 29% of U.S. adults now identify as religiously unaffiliated (atheist, agnostic, or &ldquo;nothing in particular&rdquo;)&mdash;up from 16% in 2007. Among adults aged 18 to 29, approximately 44% are unaffiliated.</p>
+    <p>The religiously unaffiliated report lower satisfaction with their communities and social lives than religiously affiliated Americans. They are less civically engaged and less likely to volunteer in local communities.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>Pew Research Center.</strong> &ldquo;Religious &lsquo;Nones&rsquo; in America: Who They Are and What They Believe.&rdquo; January 24, 2024.</p>
+      <p><a href="https://www.pewresearch.org/religion/2024/01/24/religious-nones-in-america-who-they-are-and-what-they-believe/" target="_blank" rel="noopener">https://www.pewresearch.org/religion/2024/01/24/religious-nones-in-america-who-they-are-and-what-they-believe/</a></p>
+      <p style="margin-top:1rem;"><strong>Pew Research Center.</strong> &ldquo;Decline of Christianity in the U.S. Has Slowed, May Have Leveled Off.&rdquo; 2023&ndash;24 Religious Landscape Study, February 2025.</p>
+      <p><a href="https://www.pewresearch.org/religion/2025/02/26/decline-of-christianity-in-the-us-has-slowed-may-have-leveled-off/" target="_blank" rel="noopener">https://www.pewresearch.org/religion/2025/02/26/decline-of-christianity-in-the-us-has-slowed-may-have-leveled-off/</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-5">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-5')">&times;</button>
+    <div class="modal-stat">158,000</div>
+    <h3>&ldquo;Deaths of Despair&rdquo;&mdash;Suicide, Overdose, and Alcoholic Liver Disease</h3>
+    <p>Princeton economists Anne Case and Angus Deaton documented a dramatic rise in what they term &ldquo;deaths of despair&rdquo;&mdash;deaths from suicide, drug overdose, and alcoholic liver disease. In 2018, approximately 158,000 Americans died from these causes, compared to 65,000 in 1995.</p>
+    <p>Case and Deaton attribute this not primarily to short-term economic fluctuations but to a &ldquo;broad deterioration in the lives of Americans without a college degree,&rdquo; including the weakening of social institutions, declining economic prospects, and what Durkheim called the failure of society to provide &ldquo;the framework within which they can live dignified and meaningful lives.&rdquo;</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>Case, Anne and Deaton, Angus.</strong> <em>Deaths of Despair and the Future of Capitalism.</em> Princeton University Press, 2020.</p>
+      <p style="margin-top:1rem;"><strong>Case, Anne and Deaton, Angus.</strong> &ldquo;Rising Morbidity and Mortality in Midlife Among White Non-Hispanic Americans in the 21st Century.&rdquo; <em>Proceedings of the National Academy of Sciences</em> 112(49), 2015.</p>
+      <p><a href="https://www.pnas.org/doi/10.1073/pnas.1518393112" target="_blank" rel="noopener">https://www.pnas.org/doi/10.1073/pnas.1518393112</a></p>
+      <p style="margin-top:1rem;"><strong>Case, Anne and Deaton, Angus.</strong> &ldquo;The Great Divide: Education, Despair, Death.&rdquo; NBER Working Paper 29241, 2021.</p>
+      <p><a href="https://www.nber.org/system/files/working_papers/w29241/w29241.pdf" target="_blank" rel="noopener">https://www.nber.org/system/files/working_papers/w29241/w29241.pdf</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-6">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-6')">&times;</button>
+    <div class="modal-stat">33% → 13%</div>
+    <h3>The Shrinking of American Social Networks</h3>
+    <p>In 1990, 33% of Americans reported having 10 or more close friends. By 2021, just 13% did. Meanwhile, the share reporting no close friends quadrupled from 3% to 12%, and continued rising to 17% by 2024.</p>
+    <p>In 1990, nearly half (45%) of young men said they would turn to friends first when facing a personal problem. By 2021, only 22% did&mdash;with 36% now calling their parents instead. Americans who attend religious services regularly report significantly lower rates of loneliness than those who do not attend.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>Cox, Daniel A.</strong> &ldquo;The State of American Friendship: Change, Challenges, and Loss.&rdquo; <em>American Perspectives Survey</em>, Survey Center on American Life, June 2021.</p>
+      <p><a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/" target="_blank" rel="noopener">https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/</a></p>
+      <p style="margin-top:1rem;"><strong>Cox, Daniel A.</strong> &ldquo;Men&rsquo;s Social Circles Are Shrinking.&rdquo; Survey Center on American Life, 2022.</p>
+      <p><a href="https://www.americansurveycenter.org/why-mens-social-circles-are-shrinking/" target="_blank" rel="noopener">https://www.americansurveycenter.org/why-mens-social-circles-are-shrinking/</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav
+let lastScroll = 0;
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  const c = window.scrollY;
+  if (c > lastScroll && c > 100) nav.classList.add('hidden');
+  else nav.classList.remove('hidden');
+  lastScroll = c;
+});
+
+// Modals
+function openModal(id) {
+  document.getElementById(id).classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById(id).classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+  });
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.active').forEach(m => { m.classList.remove('active'); });
+    document.body.style.overflow = '';
+  }
+});
+</script>
+</body>
+</html>
