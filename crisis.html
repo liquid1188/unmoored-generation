@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Crisis — The Unmoored Generation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">THE UNMOORED GENERATION</a>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <ul class="nav-links">
+      <li><a href="crisis.html" class="active">The Crisis</a></li>
+      <li><a href="framework.html">The Framework</a></li>
+      <li><a href="diagnosis.html">The Diagnosis</a></li>
+      <li><a href="solutions.html">The Way Forward</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="join.html">Join</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="page-header">
+  <div class="page-header-inner">
+    <div class="section-label">The Evidence</div>
+    <h1>Something Has Gone Wrong</h1>
+    <p>Across every metric that measures human flourishing&mdash;mental health, social connection, sense of purpose, hope for the future&mdash;young adults in the West are in freefall. The data is no longer ambiguous.</p>
+  </div>
+</header>
+
+<section class="section" style="background:var(--white); border-top:4px solid var(--blood);">
+  <div class="section-inner">
+
+    <div class="data-grid reveal">
+      <a class="data-card" onclick="openModal('modal-1')" role="button" tabindex="0">
+        <div class="data-number">40%</div>
+        <div class="data-title">Persistent sadness and hopelessness among teens</div>
+        <div class="data-desc">Four in ten U.S. high school students reported persistent feelings of sadness or hopelessness in 2023&mdash;up from 30% in 2013.</div>
+        <div class="data-source">CDC Youth Risk Behavior Survey, 2023</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-2')" role="button" tabindex="0">
+        <div class="data-number">20%</div>
+        <div class="data-title">Seriously considered attempting suicide</div>
+        <div class="data-desc">One in five high school students seriously considered attempting suicide in 2023. Nearly 1 in 10 attempted it.</div>
+        <div class="data-source">CDC YRBS Data Summary &amp; Trends Report, 2013–2023</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-3')" role="button" tabindex="0">
+        <div class="data-number">3%→17%</div>
+        <div class="data-title">Collapse in close friendships</div>
+        <div class="data-desc">The share of Americans with no close friends has risen from 3% in 1990 to 17% in 2024. Young men are hardest hit, with 28% reporting no close social connections.</div>
+        <div class="data-source">Survey Center on American Life / AEI, 2021 &amp; 2024</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-4')" role="button" tabindex="0">
+        <div class="data-number">29%</div>
+        <div class="data-title">Religiously unaffiliated&mdash;and rising among youth</div>
+        <div class="data-desc">29% of U.S. adults are now religiously unaffiliated. Among adults 18&ndash;29, 44% identify as &ldquo;nones.&rdquo; The unaffiliated report lower community satisfaction and social connection.</div>
+        <div class="data-source">Pew Research Center, 2023–24 Religious Landscape Study</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-5')" role="button" tabindex="0">
+        <div class="data-number">158,000</div>
+        <div class="data-title">&ldquo;Deaths of despair&rdquo; per year</div>
+        <div class="data-desc">In 2018, 158,000 Americans died from suicide, drug overdose, and alcoholic liver disease&mdash;up from 65,000 in 1995.</div>
+        <div class="data-source">Case &amp; Deaton, <em>Deaths of Despair and the Future of Capitalism</em></div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+
+      <a class="data-card" onclick="openModal('modal-6')" role="button" tabindex="0">
+        <div class="data-number">33%→13%</div>
+        <div class="data-title">Friendship networks have halved</div>
+        <div class="data-desc">In 1990, 33% of Americans reported 10+ close friends. By 2021, just 13%. More than half of those with 3 or fewer friends report regular loneliness.</div>
+        <div class="data-source">Gallup (1990) &amp; American Perspectives Survey (2021)</div>
+        <div class="data-link-hint">Click for full citation →</div>
+      </a>
+    </div>
+
+    <div class="pull-quote reveal">
+      <p>&ldquo;There seems to be a kind of malaise affecting the young people I teach. The worries don&rsquo;t appear to have a specific object&mdash;rather, there is generalized anxiety and perhaps, a kind of listlessness and a sense of being &lsquo;unmoored.&rsquo;&rdquo;</p>
+      <cite>&mdash; Iskra Fileva, University Professor of Philosophy</cite>
+    </div>
+
+    <div class="prose reveal" style="max-width:720px;">
+      <p>The conventional explanations&mdash;pandemic disruption, social media, economic precarity, political polarization&mdash;each capture something real. But they remain at the level of symptoms. They describe what happened to young people without explaining <em>why</em> it has hollowed them out so completely.</p>
+      <p>The answer lies deeper. It is <strong>anthropological</strong>. What has collapsed is not a policy or a technology but an entire account of what a human being is, what a human being is <em>for</em>, and what makes a human life worth living. Until that account is recovered, no amount of therapy, policy reform, or digital detox will reach the root.</p>
+      <p>The Catholic intellectual tradition has that account. It has carried it, refined it, and lived it for two thousand years. The question is whether the Church and her thinkers will bring it to bear on the defining cultural crisis of our time.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="cta-banner">
+  <h3>The crisis is anthropological. So is the answer.</h3>
+  <p>Explore the four pillars that collapsed — and what the Catholic tradition offers in their place.</p>
+  <a href="framework.html" class="btn">Read the Framework →</a>
+</div>
+
+<footer>
+  <div class="footer-brand">THE UNMOORED GENERATION</div>
+  <div class="footer-tagline">&ldquo;Our hearts are restless until they rest in You.&rdquo;</div>
+  <ul class="footer-links">
+    <li><a href="crisis.html">The Crisis</a></li>
+    <li><a href="framework.html">The Framework</a></li>
+    <li><a href="diagnosis.html">The Diagnosis</a></li>
+    <li><a href="solutions.html">The Way Forward</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="join.html">Join</a></li>
+  </ul>
+  <div class="footer-copy">&copy; 2026 Likoudis Legacy Foundation. All rights reserved.</div>
+</footer>
+
+<!-- CITATION MODALS -->
+<div class="modal-overlay" id="modal-1">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-1')">&times;</button>
+    <div class="modal-stat">40%</div>
+    <h3>Persistent Feelings of Sadness or Hopelessness Among U.S. High School Students</h3>
+    <p>In 2023, 39.7% of U.S. high school students experienced persistent feelings of sadness or hopelessness during the past 12 months. This represents a significant increase from 30% in 2013, though a slight improvement from 42% in 2021.</p>
+    <p>The trend is particularly acute among female students (53%), LGBTQ+ students (65%), and students from marginalized racial and ethnic groups.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>CDC.</strong> &ldquo;Youth Risk Behavior Survey Data Summary &amp; Trends Report: 2013&ndash;2023.&rdquo; U.S. Department of Health and Human Services, 2024.</p>
+      <p><a href="https://www.cdc.gov/yrbs/dstr/pdf/YRBS-2023-Data-Summary-Trend-Report.pdf" target="_blank" rel="noopener">https://www.cdc.gov/yrbs/dstr/pdf/YRBS-2023-Data-Summary-Trend-Report.pdf</a></p>
+      <p style="margin-top:1rem;"><strong>Verlenden, J.V., et al.</strong> &ldquo;Mental Health and Suicide Risk Among High School Students.&rdquo; <em>MMWR Suppl.</em> 73(4), October 2024.</p>
+      <p><a href="https://www.cdc.gov/mmwr/volumes/73/su/pdfs/su7304a9-H.pdf" target="_blank" rel="noopener">https://www.cdc.gov/mmwr/volumes/73/su/pdfs/su7304a9-H.pdf</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-2">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-2')">&times;</button>
+    <div class="modal-stat">20.4%</div>
+    <h3>Suicidal Ideation Among U.S. High School Students</h3>
+    <p>In 2023, 20.4% of high school students seriously considered attempting suicide, and 9.5% attempted suicide during the past 12 months. Among female students, 27% seriously considered suicide.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>CDC.</strong> &ldquo;Mental Health &mdash; Adolescent and School Health.&rdquo; Updated January 2025.</p>
+      <p><a href="https://www.cdc.gov/healthy-youth/mental-health/index.html" target="_blank" rel="noopener">https://www.cdc.gov/healthy-youth/mental-health/index.html</a></p>
+      <p style="margin-top:1rem;"><strong>CDC.</strong> &ldquo;2023 Youth Risk Behavior Survey Results.&rdquo; Updated February 2025.</p>
+      <p><a href="https://www.cdc.gov/yrbs/results/2023-yrbs-results.html" target="_blank" rel="noopener">https://www.cdc.gov/yrbs/results/2023-yrbs-results.html</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-3">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-3')">&times;</button>
+    <div class="modal-stat">3% → 17%</div>
+    <h3>The Collapse of Close Friendships in America</h3>
+    <p>In 1990, just 3% of Americans reported having no close friends. By 2021, that figure had risen to 12%. By 2024, it reached 17%. Young men have been hardest hit: 28% of men under 30 reported having no close social connections in 2021.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>Cox, Daniel A.</strong> &ldquo;The State of American Friendship: Change, Challenges, and Loss.&rdquo; <em>American Perspectives Survey</em>, Survey Center on American Life, June 2021.</p>
+      <p><a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/" target="_blank" rel="noopener">https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/</a></p>
+      <p style="margin-top:1rem;"><strong>Cox, Daniel A. and Pressler, Samuel.</strong> &ldquo;Disconnected: The Growing Class Divide in American Civic Life.&rdquo; Survey Center on American Life, 2024.</p>
+      <p><a href="https://www.aei.org/featured_data/the-decline-in-american-friendship/" target="_blank" rel="noopener">https://www.aei.org/featured_data/the-decline-in-american-friendship/</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-4">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-4')">&times;</button>
+    <div class="modal-stat">29%</div>
+    <h3>The Rise of Religious &ldquo;Nones&rdquo; in America</h3>
+    <p>According to Pew Research Center&rsquo;s 2023&ndash;24 Religious Landscape Study, 29% of U.S. adults now identify as religiously unaffiliated. Among adults aged 18&ndash;29, approximately 44% are unaffiliated. The unaffiliated report lower satisfaction with their communities and social lives.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>Pew Research Center.</strong> &ldquo;Religious &lsquo;Nones&rsquo; in America: Who They Are and What They Believe.&rdquo; January 24, 2024.</p>
+      <p><a href="https://www.pewresearch.org/religion/2024/01/24/religious-nones-in-america-who-they-are-and-what-they-believe/" target="_blank" rel="noopener">https://www.pewresearch.org/religion/2024/01/24/religious-nones-in-america-who-they-are-and-what-they-believe/</a></p>
+      <p style="margin-top:1rem;"><strong>Pew Research Center.</strong> &ldquo;Decline of Christianity in the U.S. Has Slowed, May Have Leveled Off.&rdquo; February 2025.</p>
+      <p><a href="https://www.pewresearch.org/religion/2025/02/26/decline-of-christianity-in-the-us-has-slowed-may-have-leveled-off/" target="_blank" rel="noopener">https://www.pewresearch.org/religion/2025/02/26/decline-of-christianity-in-the-us-has-slowed-may-have-leveled-off/</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-5">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-5')">&times;</button>
+    <div class="modal-stat">158,000</div>
+    <h3>&ldquo;Deaths of Despair&rdquo;</h3>
+    <p>Princeton economists Anne Case and Angus Deaton documented a dramatic rise in deaths from suicide, drug overdose, and alcoholic liver disease. In 2018, approximately 158,000 Americans died from these causes, compared to 65,000 in 1995.</p>
+    <p>Case and Deaton attribute this to a &ldquo;broad deterioration in the lives of Americans without a college degree,&rdquo; including the weakening of social institutions and declining economic prospects.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>Case, Anne and Deaton, Angus.</strong> <em>Deaths of Despair and the Future of Capitalism.</em> Princeton University Press, 2020.</p>
+      <p style="margin-top:1rem;"><strong>Case, Anne and Deaton, Angus.</strong> &ldquo;Rising Morbidity and Mortality in Midlife.&rdquo; <em>PNAS</em> 112(49), 2015.</p>
+      <p><a href="https://www.pnas.org/doi/10.1073/pnas.1518393112" target="_blank" rel="noopener">https://www.pnas.org/doi/10.1073/pnas.1518393112</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-6">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('modal-6')">&times;</button>
+    <div class="modal-stat">33% → 13%</div>
+    <h3>The Shrinking of American Social Networks</h3>
+    <p>In 1990, 33% of Americans reported having 10 or more close friends. By 2021, just 13% did. In 1990, 45% of young men said they would turn to friends first when facing a personal problem. By 2021, only 22% did. Americans who attend religious services regularly report significantly lower rates of loneliness.</p>
+    <div class="citation">
+      <div class="cite-label">Primary Sources</div>
+      <p><strong>Cox, Daniel A.</strong> &ldquo;The State of American Friendship.&rdquo; Survey Center on American Life, June 2021.</p>
+      <p><a href="https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/" target="_blank" rel="noopener">https://www.americansurveycenter.org/research/the-state-of-american-friendship-change-challenges-and-loss/</a></p>
+      <p style="margin-top:1rem;"><strong>Cox, Daniel A.</strong> &ldquo;Men&rsquo;s Social Circles Are Shrinking.&rdquo; Survey Center on American Life, 2022.</p>
+      <p><a href="https://www.americansurveycenter.org/why-mens-social-circles-are-shrinking/" target="_blank" rel="noopener">https://www.americansurveycenter.org/why-mens-social-circles-are-shrinking/</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
